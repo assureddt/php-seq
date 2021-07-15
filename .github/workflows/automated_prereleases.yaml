@@ -1,0 +1,32 @@
+---
+# Many thanks to marvinpinto for both the action and the example docs on how to
+# use it.
+# https://github.com/marvinpinto/action-automatic-releases
+
+# Create automatic pre-release releases when `main` changes.
+name: Pre-releases
+on:
+  push:
+    branches:
+      - main
+jobs:
+  phplint:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v1
+        - name: php lint
+          uses: michaelw90/PHP-Lint@2.1.0
+  pre-release:
+    name: Pre Release
+    runs-on: ubuntu-latest
+    needs: phplint
+    steps:
+      # TODO: Add build and/or test
+      - uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: latest
+          prerelease: true
+          title: Development Build
+          # No files should be uploaded; simply pull from source control.
