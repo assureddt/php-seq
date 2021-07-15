@@ -1,7 +1,7 @@
 # php-seq
-- ![PHP Lint](https://github.com/assureddt/php-seq/actions/workflows/phplint.yml/badge.svg)
-- ![Release](https://img.shields.io/github/v/release/assureddt/php-seq?style=plastic)
-- [SemVer](https://semver.org/) version observance: ![semver](https://img.shields.io/badge/semver-2.0.0-blue)
+![PHP Lint](https://github.com/assureddt/php-seq/actions/workflows/phplint.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/assureddt/php-seq?style=plastic)
+![semver](https://img.shields.io/badge/semver-2.0.0-blue)
 
 simple logging to seq from php
 
