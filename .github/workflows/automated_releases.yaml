@@ -1,0 +1,32 @@
+---
+# Many thanks to marvinpinto for both the action and the example docs on how to
+# use it.
+# https://github.com/marvinpinto/action-automatic-releases
+
+# Real releases from tagged versions
+name: Tagged-releases
+on:
+  push:
+    tags:
+      # Any tags with the format "vx.y.z", or actually any "vblah".
+      # TODO: Restrict this more sensibly.
+      - "v*"
+jobs:
+  phplint:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v1
+        - name: php lint
+          uses: michaelw90/PHP-Lint@2.1.0
+  tagged-release:
+    name: Tagged Release
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Add build and/or test
+      - uses: marvinpinto/action-automatic-releases@1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            php-seq.php
